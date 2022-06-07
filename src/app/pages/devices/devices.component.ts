@@ -3,7 +3,7 @@ import { FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
 import { IMultiSelectOption, IMultiSelectSettings, IMultiSelectTexts } from 'angular-2-dropdown-multiselect';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
-import { User, UserProfile, UserWork, UserContacts, UserSocial, UserSettings, Device } from './devices.model';
+import {  Device } from './devices.model';
 import { DeviceService } from '../../services/device.service';
 import { MenuService } from '../../theme/components/menu/menu.service';
 import { TranslateService } from '@ngx-translate/core';
@@ -19,8 +19,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class DevicesComponent implements OnInit {
 
   public menuItems:Array<any>;  
-  public users: User[];
-  public user: User;
+
   public device: Device=new Device();
   public devices:Device[];
   public searchText: string;
@@ -86,24 +85,7 @@ export class DevicesComponent implements OnInit {
     );    
   }
 
-  public addUser(user:User){
-    this.deviceService.addUser(user).subscribe(user => {
-      this.getDevices();      
-    });
-  }
-
-  public updateUser(user:User){
-    this.deviceService.updateUser(user).subscribe(user => {
-      this.getDevices();      
-    });
-  }
-
-  public deleteUser(user:User){
-    this.deviceService.deleteUser(user.id).subscribe(result => 
-      this.getDevices()
-    );
-  }
-
+  
   public toggle(type){
     this.type = type;
   }
@@ -133,7 +115,7 @@ export class DevicesComponent implements OnInit {
   }
 
   public assignMenuItemsToUser(user){  
-    this.updateUser(user);
+  
     sessionStorage.setItem('userMenuItems', JSON.stringify(user.menuIds));
     this.toastrService.success('Please, logout and login to see result.', 'Successfully assigned !');
   }

@@ -27,7 +27,7 @@ import { HorizontalMenuComponent } from './theme/components/menu/horizontal-menu
 import { BreadcrumbComponent } from './theme/components/breadcrumb/breadcrumb.component';
 import { BackTopComponent } from './theme/components/back-top/back-top.component';
 import { UserMenuComponent } from './theme/components/user-menu/user-menu.component';
-import { BlankComponent } from './pages/blank/blank.component';
+
 
 import { NotFoundComponent } from './pages/errors/not-found/not-found.component';
 import { FlagsMenuComponent } from './theme/components/flags-menu/flags-menu.component';
@@ -63,7 +63,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     BreadcrumbComponent,
     BackTopComponent,
     UserMenuComponent,
-    BlankComponent,
+   
     NotFoundComponent,
     FlagsMenuComponent,
     UploadComponent,

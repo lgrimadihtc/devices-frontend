@@ -1,20 +1,17 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 @Injectable()
-export class StatisticService {
-
-    public urlService = environment.UrlApi+"statistic";
+export class SummaryMetricService {
+    
+    public urlService = environment.UrlApi+"summarymetric";
     constructor(public http:HttpClient) { }
 
     
-    ////
+    
 
-    getStatistic(): Observable<any> {
+    getSummaryMetric(): Observable<any> {
         return this.http.get<any>(this.urlService);
     }
-
- 
-} 
+}

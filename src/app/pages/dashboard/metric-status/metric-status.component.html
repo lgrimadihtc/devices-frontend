@@ -1,6 +1,6 @@
 <div widget class="card border-0">
     <div class="card-header transparent border-0 text-muted">
-        <h5 class="mb-0">Visitors</h5>
+        <h5 class="mb-0">Metric By Status </h5>
         <div class="widget-controls"> 
             <a data-widgster="expand" href="#" class="transition"><i class="fa fa-chevron-down"></i></a>
             <a data-widgster="collapse" href="#" class="transition"><i class="fa fa-chevron-up"></i></a>                         
@@ -24,7 +24,7 @@
               [gradient]="gradient"
               [tooltipDisabled]="tooltipDisabled"       
               [labelFormatting]="visitorsLabelFormat"
-              [results]="countries"
+              [results]="summaries"
               (select)="onSelect($event)">
             </ngx-charts-tree-map>
         </div>
