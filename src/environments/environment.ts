@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  UrlApi: "http://localhost:8080/"
+  UrlApi: "https://devices-backend-grimaldi.herokuapp.com/"
 };
 
 /*
