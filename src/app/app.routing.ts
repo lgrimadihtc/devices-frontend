@@ -2,21 +2,19 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules  } from '@angular/router'; 
 import { PagesComponent } from './pages/pages.component';
 import { NotFoundComponent } from './pages/errors/not-found/not-found.component';
-import { UploadComponent } from './pages/upload/upload.component';
-import { LoadStatusComponent } from './pages/load-status/load-status.component';
+import { PaymentComponent } from './pages/payment/payment.component';
+
 
 export const routes: Routes = [
   {
     path: '', 
     component: PagesComponent, 
     children:[
-      { path: '', loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule), data: { breadcrumb: 'Dashboard' }  },          
-      { path: 'device', loadChildren: () => import('./pages/devices/device.module').then(m => m.DeviceModule), data: { breadcrumb: 'devices' } },
-      { path: 'upload/:id',component:UploadComponent, data: { breadcrumb: 'upload' } },
-      { path: 'loadstatus',component:LoadStatusComponent, data: { breadcrumb: 'upload' } },
+     
+      { path: '', loadChildren: () => import('./pages/product/products.module').then(m => m.DeviceModule), data: { breadcrumb: 'product' } },
+      { path: 'payment', component: PaymentComponent, data: { breadcrumb: 'Payment' } },
       { path: '**', component: NotFoundComponent }
-      //{ path: 'device', component: DevicesComponent, data: { breadcrumb: 'Device' } }
-    ]
+          ]
   },
  
 ]; 

@@ -31,16 +31,19 @@ import { UserMenuComponent } from './theme/components/user-menu/user-menu.compon
 
 import { NotFoundComponent } from './pages/errors/not-found/not-found.component';
 import { FlagsMenuComponent } from './theme/components/flags-menu/flags-menu.component';
-import { UploadComponent } from './pages/upload/upload.component';
-import { LoadStatusComponent } from './pages/load-status/load-status.component';
-//import { DevicesComponent } from './pages/devices/devices.component';
+
+
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { PaymentComponent } from './pages/payment/payment.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({  
   imports: [
     BrowserModule,
     PerfectScrollbarModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(), 
     NgxDatatableModule,
@@ -63,11 +66,10 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     BreadcrumbComponent,
     BackTopComponent,
     UserMenuComponent,
-   
     NotFoundComponent,
     FlagsMenuComponent,
-    UploadComponent,
-    LoadStatusComponent
+    PaymentComponent,
+   
     
   ],
   providers: [ 

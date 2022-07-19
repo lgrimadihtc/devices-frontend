@@ -8,18 +8,17 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { PipesModule } from '../../theme/pipes/pipes.module';
-import { DevicesComponent } from './devices.component';
+import { ProductsComponent } from './products.component';
 
 
 export const routes = [
-  { path: '', component: DevicesComponent, pathMatch: 'full' }
+  { path: '', component: ProductsComponent, pathMatch: 'full' }
 ];
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
-  //  InMemoryWebApiModule.forRoot(MembershipData, { delay: 0 }),
     RouterModule.forChild(routes),
     FormsModule,
     ReactiveFormsModule,
@@ -29,7 +28,7 @@ export const routes = [
     PipesModule
   ],
   declarations: [
-   DevicesComponent
+    ProductsComponent
   ]
 })
 export class DeviceModule { }

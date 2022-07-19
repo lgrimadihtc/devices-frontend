@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ProfilePicturePipe } from './profilePicture/profilePicture.pipe';
 import { ChatPersonSearchPipe } from './search/chat-person-search.pipe';
-import { DevicePipe } from './search/device.pipe';
+import { ProductPipe } from './search/product.pipe';
 import { TruncatePipe } from './truncate/truncate.pipe';
 import { MailSearchPipe } from './search/mail-search.pipe';
 
@@ -14,14 +14,14 @@ import { MailSearchPipe } from './search/mail-search.pipe';
     declarations: [
         ProfilePicturePipe,
         ChatPersonSearchPipe,
-        DevicePipe,
+        ProductPipe,
         TruncatePipe,
         MailSearchPipe
     ],
     exports: [
         ProfilePicturePipe,
         ChatPersonSearchPipe,
-        DevicePipe,
+        ProductPipe,
         TruncatePipe,
         MailSearchPipe
     ]

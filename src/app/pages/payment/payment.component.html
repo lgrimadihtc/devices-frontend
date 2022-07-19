@@ -1,0 +1,123 @@
+
+<div class="row ">
+    <div class="col-lg-7  d-flex align-items-stretch">
+        <div widget class="card border-0 box-shadow">
+            <div class="card-header transparent border-0 text-muted">
+                <h5 class="mb-0">Items</h5>
+                  
+            </div>
+            <div class="card-body widget-body">
+                <div  class="row">
+                    <div class="col-12">
+                        <div class="table-responsive bg-white box-shadow">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        
+                                        <th></th>
+                                       
+                                        <th>Title</th>
+                                        <th>Price </th>
+                                 
+                                        <th>Quantity </th>
+                                        <th>Total </th>
+                                    
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  
+                                    <tr
+                                        *ngFor="let product of products; let i=index ">
+                                      
+                                        <td class="align-middle">
+                                            <img *ngIf="product.image" class="rounded-circle" [src]="product.image" width="40">
+                                            <img *ngIf="!product.image" class="rounded-circle"
+                                                src="assets/img/products/defaultproduct.png" width="40">
+                                        </td>
+                                       
+                                        <td class="align-middle text-truncate">{{product.title}}</td>
+                                        <td class="align-middle text-truncate">{{product.price|currency}} </td>
+                                     
+                                        <td class="align-middle text-truncate">{{product.quantity}} 
+                                            <button type="button" class="btn btn-success w-25p;  mb-1 mr-1" (click)="add(product.id)">+</button>
+                                            <button type="button" class="btn btn-danger w-25p  mb-1 mr-1" (click)="subtract(product.id,i)">-</button>
+                                        </td>
+                
+                                        <td class="align-middle text-truncate">{{((product.price*product.quantity)|number : '1.2-2')|currency}} </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                       
+                    </div>
+                </div>
+                <div  class="row justify-content-end mt-4">
+                    <div class="col-4 ">
+                        <h2>Total {{total|currency}}</h2>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-5  d-flex align-items-stretch mt-2">
+        <div widget class="card border-0 box-shadow">
+            <div class="card-header transparent border-0 text-muted">
+                <h5 class="mb-0">Customer Info</h5>
+                   
+            </div>
+            <div class="card-body widget-body">
+
+
+                <form  [formGroup]="accountForm" class="row bg-light pt-2">
+
+                    <div class="form-group col-md-12" [ngClass]="{'has-danger' : accountForm.get('lastname').touched && accountForm.get('firstname').hasError('required'), 'has-success' : !accountForm.get('firstname').hasError('required') }">
+                        <label class="form-control-label">firstname</label>
+                        <div class="input-group"> 
+                            <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-user-o"></i></span></div>  
+                            <input formControlName="firstname" class="form-control" [ngClass]="{'form-control-danger' :  accountForm.get('firstname').hasError('required'), 'form-control-success' :  !accountForm.get('firstname').hasError('required') }" type="text"> 
+                        </div>
+                        <small class="text-danger" *ngIf=" accountForm.get('lastname').touched && accountForm.get('firstname').hasError('required')">Firstname is required</small>                             
+                    </div>
+
+                    <div class="form-group col-md-12" [ngClass]="{'has-danger' : accountForm.get('lastname').touched  && ((accountForm.get('lastname').hasError('required')) || (accountForm.get('lastname').hasError('minlength'))), 
+                                                                 'has-success' : !accountForm.get('lastname').hasError('required') && !accountForm.get('lastname').hasError('minlength')}">
+                        <label class="form-control-label">Lastname</label> 
+                        <div class="input-group"> 
+                            <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-user-o"></i></span></div>                       
+                            <input formControlName="lastname" class="form-control" [ngClass]="{'form-control-danger' : ((accountForm.get('lastname').hasError('required')) || (accountForm.get('lastname').hasError('minlength'))),                                                                                                        'form-control-success' : !accountForm.get('lastname').hasError('required') && !accountForm.get('lastname').hasError('minlength')}" >
+                        </div>
+                        <small class="text-danger" *ngIf="accountForm.get('lastname').touched  && accountForm.get('lastname').hasError('required')">Lastname is required</small>                              
+                        <small class="text-danger" *ngIf="accountForm.get('lastname').touched  && accountForm.get('lastname').hasError('minlength')">Lastname isn't long enough, minimum of 6 characters</small>                            
+                    </div>
+
+                    <div class="form-group col-md-12" [ngClass]="{'has-danger' : accountForm.get('address').touched && ((accountForm.get('address').hasError('required')) || (accountForm.get('address').hasError('mismatchedPasswords'))), 
+                                                                 'has-success' : !accountForm.get('address').hasError('required') && !accountForm.get('address').hasError('mismatchedPasswords')}">
+                        <label class="form-control-label">Address</label>                              
+                        <div class="input-group"> 
+                            <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-user-o"></i></span></div>     
+                            <input formControlName="address" class="form-control" [ngClass]="{'form-control-danger' : (accountForm.get('address').hasError('required')) || (accountForm.get('address').hasError('mismatchedPasswords')), 
+                                                                                                      'form-control-success' : !accountForm.get('address').hasError('required') && !accountForm.get('address').hasError('mismatchedPasswords')}" type="lastname" >
+                        </div>
+                        <small class="text-danger" *ngIf="accountForm.get('address').touched && accountForm.get('address').hasError('required')">Address is required</small>                              
+                        <small class="text-danger" *ngIf="accountForm.get('address').touched && accountForm.get('address').hasError('mismatchedPasswords')">Address do not match</small> 
+                    </div>
+
+                    <div class="form-group col-md-12" [ngClass]="{'has-danger' : accountForm.get('email').touched && ((accountForm.get('email').hasError('required')) || (accountForm.get('email').hasError('normalEmailRule'))), 
+                                                        'has-success' : !accountForm.get('email').hasError('required') && !accountForm.get('email').hasError('normalEmailRule')}">
+                        <label class="form-control-label">Email</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-envelope"></i></span></div>
+                            <input formControlName="email" class="form-control" [ngClass]="{'form-control-danger' : (accountForm.get('email').hasError('required')) || (accountForm.get('email').hasError('normalEmailRule')), 
+                                                                                            'form-control-success' :  !accountForm.get('email').hasError('required') && !accountForm.get('email').hasError('normalEmailRule')}" type="text">                      
+                        </div>
+                        <small class="text-danger" *ngIf="accountForm.get('email').touched && accountForm.get('email').hasError('required')">Email is required</small>                              
+                        <small class="text-danger" *ngIf="accountForm.get('email').touched &&  accountForm.get('email').hasError('normalEmailRule')">Invalid email address</small>
+                    </div>
+                    <div class="col ">  <button class="btn btn-primary pull-right" (click)="submit()"><i class="fa  fa-thumbs-o-up"></i> Pay</button></div>
+                </form>
+               
+            </div>
+        </div>
+    </div>
+</div>
